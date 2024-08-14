@@ -71,7 +71,25 @@ def stage_7():
     print("    I  I")
     print("   I    I")
     print("  I      I")
+def game():
+    userinput = input("To start please enter a letter:")
+    trytest = False
+    i = 0
+    while i <= (len(random_word) -1):
+        if random_word[i] == userinput: 
+            print(i)
+            print(f"correct '{userinput}' is in the word")
+            correct_guess[i] = userinput
+            print(correct_guess)
+            trytest = True
 
+            i += 20
+        else: 
+            print(f"'{userinput}' is not in the word")
+            i += 1
+            print(i)
+            if i == (len(random_word)) and trytest == False:
+                num += 1
 
 
 # list of random words
@@ -98,12 +116,9 @@ random_word = words_list[random_index]
 print("Randomly selected word:", random_word)
 
 print("Welcome to hangman!")
-userinput = input("To start please enter a letter:")
+
+while len(correct_guess) < len(random_word):
+    correct_guess.append('_')
+
 while num < 8:
-    i = 0
-    while i <= (len(random_word) -1):
-        if i == userinput: 
-            print(f"correct '{userinput}' is in the word")
-            correct_guess.insert(i, userinput)
-        else: 
-            print(f"'{userinput}' is not in the word")
+    game()

@@ -66,6 +66,9 @@ def stage_7():
     print("  I      I")
 def game(user_attemst):
     userinput = input("To start please enter a letter: ").lower()
+    if len(userinput) > 1:
+        print("please enter only one chartor ")
+        game(num)
     trytest = False  # reset the loop mechanism
     i = 0
     num = 0
@@ -77,8 +80,8 @@ def game(user_attemst):
             correct_guess[i] = userinput
             print(correct_guess)
             trytest = True  # set to true when a correct input is found
-        else:
-            print(f"Not in letter {i+1}")
+        #else:
+            #print(f"Not in letter {i+1}")
         
         i += 1
 
@@ -125,6 +128,6 @@ print(num)
 try :
     while num < 8:
         print(num)
-        num = game(num)
+        num = game(user_attemst)
 except TypeError:
     print(num)

@@ -64,28 +64,33 @@ def stage_7():
     print("    I  I")
     print("   I    I")
     print("  I      I")
-def game(user_attemst ):
-    userinput = input("To start please enter a letter:")
-    trytest = False # resest the loop mechisiam
+def game(user_attemst):
+    userinput = input("To start please enter a letter: ").lower()
+    trytest = False  # reset the loop mechanism
     i = 0
-    #num = 0
-    while i <= (len(random_word) -1):
+    num = 0
+
+    while i <= (len(random_word) - 1):
         if random_word[i] == userinput: 
             print(i)
-            print(f"correct '{userinput}' is in the word")
+            print(f"Correct! '{userinput}' is in the word")
             correct_guess[i] = userinput
             print(correct_guess)
-            trytest = True # set the loop to return a corect input
-            i += 1
-        else: 
-            i += 1
-            print(f"not in letter {i}")
-            if i == (len(random_word)) and trytest == False:
-                print(f"'{userinput}' is not in the word")
-                num += 2
-                user_attemst += 1
-                print(num)
-                return num 
+            trytest = True  # set to true when a correct input is found
+        else:
+            print(f"Not in letter {i+1}")
+        
+        i += 1
+
+        # If the loop finishes and no correct guess was found
+        if i == len(random_word) and trytest == False:
+            print(f"'{userinput}' is not in the word")
+            num += 2
+            user_attemst += 1
+            print(num)
+    
+    return num  # Return num at the end of the function
+
 
 # list of random words
 machinery = ["m","a","c","i","n","e","r","y"]
@@ -117,8 +122,9 @@ print("Welcome to hangman!")
 while len(correct_guess) < len(random_word):
     correct_guess.append('_')
 print(num)
-while num < 8:
+try :
+    while num < 8:
+        print(num)
+        num = game(num)
+except TypeError:
     print(num)
-
-    num = game(num)
-

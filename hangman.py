@@ -1,8 +1,17 @@
 import random
-def stage_1():
+def stage_0():
     print("     I---------------")
     print("     I              |")
     print("     I")
+    print("     I")
+    print("     I")
+    print("    I  I")
+    print("   I    I")
+    print("  I      I")
+def stage_1():
+    print("     I---------------")
+    print("     I              |")
+    print("     I              O")
     print("     I")
     print("     I")
     print("    I  I")
@@ -12,7 +21,7 @@ def stage_2():
     print("     I---------------")
     print("     I              |")
     print("     I              O")
-    print("     I")
+    print("     I             ( ")
     print("     I")
     print("    I  I")
     print("   I    I")
@@ -21,7 +30,7 @@ def stage_3():
     print("     I---------------")
     print("     I              |")
     print("     I              O")
-    print("     I             ( ")
+    print("     I             ( )")
     print("     I")
     print("    I  I")
     print("   I    I")
@@ -30,21 +39,12 @@ def stage_4():
     print("     I---------------")
     print("     I              |")
     print("     I              O")
-    print("     I             ( )")
-    print("     I")
-    print("    I  I")
-    print("   I    I")
-    print("  I      I")
-def stage_5():
-    print("     I---------------")
-    print("     I              |")
-    print("     I              O")
     print("     I             ( ) ")
     print("     I              |")
     print("    I  I")
     print("   I    I")
     print("  I      I")
-def stage_6():
+def stage_5():
     print("     I---------------")
     print("     I              |")
     print("     I              O")
@@ -54,7 +54,7 @@ def stage_6():
     print("    I  I")
     print("   I    I")
     print("  I      I")
-def stage_7():
+def stage_6():
     print("     I---------------")
     print("     I              |")
     print("     I              O ")
@@ -68,11 +68,10 @@ def game(user_attemst):
     userinput = input("To start please enter a letter: ").lower()
     if len(userinput) > 1:
         print("please enter only one chartor ")
-        game(num)
+        return
     trytest = False  # reset the loop mechanism
+    num = user_attemst
     i = 0
-    num = 0
-
     while i <= (len(random_word) - 1):
         if random_word[i] == userinput: 
             print(i)
@@ -88,11 +87,13 @@ def game(user_attemst):
         # If the loop finishes and no correct guess was found
         if i == len(random_word) and trytest == False:
             print(f"'{userinput}' is not in the word")
-            num += 2
+            num += 1
+            
             user_attemst += 1
             print(num)
+            break
     
-    return num  # Return num at the end of the function
+    return user_attemst  # Return num at the end of the function
 
 
 # list of random words
@@ -126,8 +127,24 @@ while len(correct_guess) < len(random_word):
     correct_guess.append('_')
 print(num)
 try :
+    num = user_attemst
     while num < 8:
         print(num)
-        num = game(user_attemst)
+        if num == 1 or num == 0:
+            stage_0()
+        if num == 2:
+            stage_1()
+        if num == 3:
+            stage_2()
+        if num == 4:
+            stage_3()  
+        if num == 5:
+            stage_4() 
+        if num == 6:
+            stage_5()
+        if num == 7:
+            stage_6()
+        user_attemst = game(user_attemst)
+        num = user_attemst
 except TypeError:
     print(num)

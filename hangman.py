@@ -1,4 +1,5 @@
 import random
+""" all the stages are used as the stages of the game """
 def stage_0():
     print("     I---------------")
     print("     I              |")
@@ -64,6 +65,7 @@ def stage_6():
     print("    I  I")
     print("   I    I")
     print("  I      I")
+    # runs the user input and chekking for the input
 def game(user_attemst):
     userinput = input("To start please enter a letter: ").lower()
     if len(userinput) > 1:
@@ -79,11 +81,7 @@ def game(user_attemst):
             correct_guess[i] = userinput
             print(correct_guess)
             trytest = True  # set to true when a correct input is found
-        #else:
-            #print(f"Not in letter {i+1}")
-        
         i += 1
-
         # If the loop finishes and no correct guess was found
         if i == len(random_word) and trytest == False:
             print(f"'{userinput}' is not in the word")
@@ -108,10 +106,13 @@ infect = ["i", "n", "f", "e", "c", "t"]
 pleasant = ["p", "l", "e", "a", "s", "a", "n", "t"]
 casualty = ["c", "a", "s", "u", "a", "l", "t", "y"]
 # all the words avalibkle for random picking 
-words_list = [machinery, battery, ethnic, bell, formation, egg, cut, infect, pleasant, casualty]
+words_list = [machinery, battery, ethnic, bell, formation, egg, cut,
+infect, pleasant, casualty]
 #number of tries 
 num = 1
+#number of tries 
 user_attemst = 0
+#list of correct guess by the user
 correct_guess = []
 
 random_index = random.randint(0, len(words_list) - 1)
